@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<!-- saved from url=(0090)http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                    <title>Deep Learning Framework : caffe installation guide - Machine Learning - Confluence</title>
+    
+        
+
+                        
+    
+                        
+    
+
+                
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE,chrome=IE7">
+
+<meta id="confluence-context-path" name="confluence-context-path" content="">
+<meta id="confluence-base-url" name="confluence-base-url" content="http://192.168.18.250:8090">
+
+<meta id="atlassian-token" name="atlassian-token" content="b3dfc2d78d347fa27be228927a6b399a8d7b1329">
+
+<meta id="confluence-space-key" name="confluence-space-key" content="ML">
+<script type="text/javascript">
+        var contextPath = '';
+</script>
+
+    
+
+    <meta name="confluence-request-time" content="1477447550571">
+        
+    
+        
+            <meta name="ajs-is-confluence-admin" content="false">
+            <meta name="ajs-connection-timeout" content="10000">
+            <meta name="ajs-discovered-plugin-features" content="{}">
+            <meta name="ajs-use-keyboard-shortcuts" content="true">
+            <meta name="ajs-show-space-welcome-dialog" content="true">
+            <meta name="ajs-keyboardshortcut-hash" content="64c0198480cc5f20b79b4af14435ab5a">
+            <style>.ia-fixed-sidebar, .ia-splitter-left {width: 285px;}.theme-default .ia-splitter #main {margin-left: 285px;}.ia-fixed-sidebar {visibility: hidden;}</style>
+            
+
+    
+            
+    
+    
+            <meta name="ajs-page-id" content="5210410">
+            <meta name="ajs-content-type" content="page">
+            <meta name="ajs-page-title" content="Deep Learning Framework : caffe installation guide">
+            <meta name="ajs-parent-page-title" content="Machine Learning Home">
+            <meta name="ajs-parent-page-id" content="5210406">
+            <meta name="ajs-space-key" content="ML">
+            <meta name="ajs-space-name" content="Machine Learning">
+            <meta name="ajs-jira-metadata-count" content="-1">
+            <meta name="ajs-from-page-title" content="">
+            <meta name="ajs-can-remove-page" content="false">
+            <meta name="ajs-browse-page-tree-mode" content="view">
+            <meta name="ajs-user-display-name" content="吉娃阿英">
+            <meta name="ajs-editor.loader.comment.resources" content="&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/cf153a11f4288875a65f0e8de04f5c6a/_/download/contextbatch/css/comment-editor/batch.css&quot; media=&quot;all&quot;&gt;
+">
+            <meta name="ajs-context-path" content="">
+            <meta name="ajs-base-url" content="http://192.168.18.250:8090">
+            <meta name="ajs-version-number" content="5.5.4">
+            <meta name="ajs-build-number" content="5517">
+            <meta name="ajs-remote-user" content="albatross">
+            <meta name="ajs-current-user-fullname" content="吉娃阿英">
+            <meta name="ajs-current-user-avatar-url" content="/images/icons/profilepics/default.png">
+            <meta name="ajs-static-resource-url-prefix" content="/s/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/_">
+            <meta name="ajs-global-settings-attachment-max-size" content="52428800">
+            <meta name="ajs-user-locale" content="en_GB">
+            <meta name="ajs-enabled-dark-features" content="">
+            <meta name="ajs-atl-token" content="b3dfc2d78d347fa27be228927a6b399a8d7b1329">
+            <meta name="ajs-confluence-flavour" content="VANILLA">
+            <meta name="ajs-user-date-pattern" content="dd MMM yyyy">
+            <meta name="ajs-editor.loader.resources" content="&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;/s/0d5a0d503d8c1eb0f16b9dbf595703a5/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/0e82f14e928d826f5ea3185cc05e33fa/_/download/contextbatch/css/editor,macro-browser,fullpage-editor,-viewcontent,-atl.general/batch.css&quot; media=&quot;all&quot;&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;/s/0d5a0d503d8c1eb0f16b9dbf595703a5/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/0e82f14e928d826f5ea3185cc05e33fa/_/download/contextbatch/css/editor,macro-browser,fullpage-editor,-viewcontent,-atl.general/batch.css?media=%28max-width%3A+1450px%29&quot; media=&quot;(max-width: 1450px)&quot;&gt;
+&lt;!--[if lt IE 9]&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;/s/0d5a0d503d8c1eb0f16b9dbf595703a5/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/0e82f14e928d826f5ea3185cc05e33fa/_/download/contextbatch/css/editor,macro-browser,fullpage-editor,-viewcontent,-atl.general/batch.css?conditionalComment=lt+IE+9&quot; media=&quot;all&quot;&gt;
+&lt;![endif]--&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/s/0d5a0d503d8c1eb0f16b9dbf595703a5/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/0e82f14e928d826f5ea3185cc05e33fa/_/download/contextbatch/js/editor,macro-browser,fullpage-editor,-viewcontent,-atl.general/batch.js&quot; &gt;&lt;/script&gt;
+">
+            <meta name="ajs-date.format" content="MMM dd, yyyy">
+    
+    <link rel="shortcut icon" href="http://192.168.18.250:8090/s/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/_/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="http://192.168.18.250:8090/s/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/_/favicon.ico">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://192.168.18.250:8090/opensearch/osd.action" title="Confluence">
+    
+                    
+            <meta name="ajs-create-issue-metadata-show-discovery" content="true">
+            
+
+<link type="text/css" rel="stylesheet" href="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/batch.css" media="all">
+<link type="text/css" rel="stylesheet" href="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/batch(1).css" media="print">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/b1e5f180d77be7d32067bea170d7cbc1/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/39/_/download/superbatch/css/batch.css?conditionalComment=lt+IE+9" media="all">
+<![endif]-->
+<!--[if lte IE 8]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/39/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+8" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/39/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/batch(2).css" media="all">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/c5773ff3039dfd281aed1ce6c1c770fc/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/2736079c00061059ba70926b6702df2c/_/download/contextbatch/css/page/batch.css?conditionalComment=lt+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/batch(3).css" media="all">
+<link type="text/css" rel="stylesheet" href="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/batch(4).css" media="all">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/0ad3cf47bd7527f822e4f08f213b0e94/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/8f1b8968308a4b343fbd6008076f2a12/_/download/contextbatch/css/viewcontent,atl.general,main,plugin.quick.comment.pre/batch.css?conditionalComment=lt+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/com.atlassian.confluence.ext.newcode-macro-plugin-syntaxhighlighter.css" media="all">
+<link type="text/css" rel="stylesheet" href="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/com.atlassian.confluence.ext.newcode-macro-plugin-sh-theme-confluence.css" media="all">
+<link type="text/css" rel="stylesheet" href="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/com.atlassian.confluence.plugins.confluence-space-ia-spacesidebar.css" media="all">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/7.0.1/_/download/batch/com.atlassian.confluence.plugins.confluence-space-ia:spacesidebar/com.atlassian.confluence.plugins.confluence-space-ia:spacesidebar.css?conditionalComment=lt+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/com.atlassian.confluence.plugins.confluence-highlight-actions-highlighting-experiment-resources.css" media="all">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/b1e5f180d77be7d32067bea170d7cbc1/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/1.5/_/download/batch/com.atlassian.confluence.plugins.confluence-highlight-actions:highlighting-experiment-resources/com.atlassian.confluence.plugins.confluence-highlight-actions:highlighting-experiment-resources.css?conditionalComment=lt+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/confluence.extra.jira-web-resources-adg.css" media="all">
+<script type="text/javascript" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/batch.js.下载"></script><style type="text/css"></style>
+<!--[if lte IE 8]>
+<script type="text/javascript" src="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/39/_/download/superbatch/js/batch.js?conditionalComment=lte+IE+8" ></script>
+<![endif]-->
+<script type="text/javascript" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/batch.js(1).下载"></script>
+<script type="text/javascript" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/batch.js(2).下载"></script>
+<script type="text/javascript" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/batch.js(3).下载"></script>
+<script type="text/javascript" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/com.atlassian.confluence.ext.newcode-macro-plugin-syntaxhighlighter.js.下载"></script>
+<script type="text/javascript" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/com.atlassian.confluence.ext.newcode-macro-plugin-syntaxhighlighter-brushes.js.下载"></script>
+<script type="text/javascript" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/com.atlassian.confluence.plugins.confluence-space-ia-soy-resources.js.下载"></script>
+<script type="text/javascript" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/com.atlassian.confluence.plugins.confluence-space-ia-spacesidebar.js.下载"></script>
+<script type="text/javascript" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/com.atlassian.confluence.plugins.confluence-highlight-actions-highlighting-experiment-resources.js.下载"></script>
+<script type="text/javascript" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/com.atlassian.mywork.mywork-confluence-host-plugin-mw-header-anchor.js.下载"></script>
+<link type="text/css" rel="stylesheet" href="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/colors.css" media="all">
+<link type="text/css" rel="stylesheet" href="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/default-theme.css" media="all">
+
+
+        
+        
+
+    
+                <link rel="canonical" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide">
+        <link rel="shortlink" href="http://192.168.18.250:8090/x/KoFP">
+    <meta name="wikilink" content="[ML:Deep Learning Framework : caffe installation guide]">
+    <meta name="page-version" content="41">
+
+<link type="text/css" rel="stylesheet" href="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/batch(5).css" media="all"><link type="text/css" rel="stylesheet" href="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/batch(6).css" media="(max-width: 1450px)"><!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/0d5a0d503d8c1eb0f16b9dbf595703a5/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/0e82f14e928d826f5ea3185cc05e33fa/_/download/contextbatch/css/editor,macro-browser,fullpage-editor,-viewcontent,-atl.general/batch.css?conditionalComment=lt+IE+9" media="all">
+<![endif]-->
+            <meta name="ajs-content-type" content="page">
+            <meta name="ajs-min-editor-height" content="150">
+            <meta name="ajs-editor-plugin-resource-prefix" content="/s/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/5.5.4/_">
+            <meta name="ajs-num-attachments" content="30">
+            <meta name="ajs-auto-start" content="false">
+            <meta name="ajs-cancel-button-close-text" content="Close">
+            <meta name="ajs-content-id" content="5210410">
+            <meta name="ajs-action-locale" content="en_GB">
+            <meta name="ajs-save-drafts" content="true">
+            <meta name="ajs-use-inline-tasks" content="true">
+            <meta name="ajs-heartbeat" content="true">
+            <meta name="ajs-cancel-button-discard-text" content="">
+            <meta name="ajs-draft-id" content="0">
+            <meta name="ajs-new-page" content="false">
+            <meta name="ajs-form-name" content="inlinecommentform">
+            <meta name="ajs-attachment-source-content-id" content="5210410">
+            <meta name="ajs-editor-mode" content="richtext">
+            <meta name="ajs-draft-type" content="page">
+            <meta name="ajs-existing-draft-id" content="0">
+            <meta name="ajs-can-attach-files" content="true">
+                
+            		    <meta name="ajs-max-thumb-width" content="300">
+		    <meta name="ajs-max-thumb-height" content="300">
+		    <meta name="ajs-can-send-email" content="false">
+		    <meta name="ajs-is-dev-mode" content="false">
+		    <meta name="ajs-draft-save-interval" content="30000">
+		    <meta name="ajs-show-hidden-user-macros" content="false">
+		    <meta name="ajs-is-admin" content="false">
+		    <meta name="ajs-confluence.prefs.editor.disable.autocomplete" content="false">
+		    <meta name="ajs-confluence.prefs.editor.disable.autoformat" content="false">
+		    <meta name="ajs-heartbeat-interval" content="30000">
+	
+    </head>
+
+<body onload="placeFocus()" id="com-atlassian-confluence" class="theme-default  aui-layout aui-theme-default" data-aui-version="5.4.4-CONFDEV-21873">
+
+        
+    <ul id="assistive-skip-links" class="assistive">
+    <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#title-heading">Skip to content</a></li>
+    <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#breadcrumbs">Skip to breadcrumbs</a></li>
+    <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#header-menu-bar">Skip to header menu</a></li>
+    <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#navigation">Skip to action menu</a></li>
+    <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#quick-search-query">Skip to quick search</a></li>
+</ul>
+<div id="page">
+<div id="full-height-container">
+    <div id="header-precursor">
+        <div class="cell">
+            
+                            </div>
+    </div>
+    
+
+
+
+<header id="header" role="banner">
+    <nav class="aui-header aui-dropdown2-trigger-group" role="navigation" data-aui-responsive="true"><div class="aui-header-inner"><div class="aui-header-before"><a class="aui-dropdown2-trigger app-switcher-trigger" aria-owns="app-switcher" aria-haspopup="true" tabindex="0"><span class="aui-icon aui-icon-small aui-iconfont-appswitcher">Linked Applications</span></a><div id="app-switcher" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul class="nav-links"><li class="nav-link"><a href="http://192.168.18.250:8081/" class="aui-dropdown2-radio interactive" title="http://192.168.18.250:8081/"><span class="nav-link-label">Bug House</span></a></li><li class="nav-link nav-link-local"><a href="http://192.168.18.250:8090/" class="aui-dropdown2-radio interactive checked" title="http://192.168.18.250:8090/"><span class="nav-link-label">Confluence</span></a></li></ul></div></div><script>
+            (function (NL) {
+                var initialise = function () {
+                    // For some milestones of AUI, the atlassian soy namespace was renamed to aui. Handle that here by ensuring that window.atlassian is defined.
+                    window.atlassian = window.atlassian || window.aui;
+                    new NL.AppSwitcher({
+                        dropdownContents: '#app-switcher'
+                    });
+                };
+                if (NL.AppSwitcher) {
+                    initialise();
+                } else {
+                    NL.onInit = initialise;
+                }
+            }(window.NL = (window.NL || {})));
+            window.NL.isUserAdmin = false</script></div><div class="aui-header-primary"><h1 id="logo" class="aui-header-logo aui-header-logo-custom"><a href="http://192.168.18.250:8090/"><img src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/confluence-logo.png" alt="Confluence" data-aui-responsive-header-index="0"></a></h1><ul class="aui-nav" style="width: auto;">
+                            <li>
+            
+        
+        
+<a id="space-menu-link" class="aui-nav-link aui-dropdown2-trigger" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" aria-haspopup="true" aria-owns="space-menu-link-content" title="Spaces"><span class="browse">Spaces</span><span class="aui-icon-dropdown"></span></a><div id="space-menu-link-content" class="aui-dropdown2 aui-style-default aui-dropdown2-in-header" aria-hidden="false"></div>
+        </li>
+                    <li>
+            
+    
+        
+<a id="people-directory-link" href="http://192.168.18.250:8090/peopledirectory.action" class=" aui-nav-imagelink" title="People">
+            <span>People</span>
+    </a>
+        </li>
+                                            <li style="display: none;"><a id="aui-responsive-header-dropdown-trigger-0" class="aui-dropdown2-trigger" aria-owns="aui-responsive-header-dropdown-content-0" aria-haspopup="true" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">More<span class="icon aui-icon-dropdown"></span></a><div id="aui-responsive-header-dropdown-content-0" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul id="aui-responsive-header-dropdown-list-0"></ul></div></div></li><li>
+            
+    
+            
+<a id="create-page-button" href="http://192.168.18.250:8090/pages/createpage.action?spaceKey=ML&amp;fromPageId=5210410" class="aui-button aui-style aui-button-primary aui-nav-imagelink" title="Create Content (c)">
+            <span>Create</span>
+    </a>
+        </li>
+        </ul>
+</div><div class="aui-header-secondary"><ul class="aui-nav">
+                        <li>
+        <form id="quick-search" class="aui-quicksearch dont-default-focus header-quicksearch" action="http://192.168.18.250:8090/dosearchsite.action" method="get"><fieldset><label for="quick-search-query" class="assistive">Quick Search</label><input id="quick-search-query" class="text app-search search quick-search-query" type="text" accesskey="q" autocomplete="off" name="queryString" title="Quick Search (/or g , g)" placeholder="Search"><input id="quick-search-submit" class="quick-search-submit" type="submit" value="Search"><div class="aui-dd-parent quick-nav-drop-down"></div></fieldset></form>
+    </li>
+        <li>
+            
+        <a id="help-menu-link" class="aui-nav-link aui-dropdown2-trigger" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" aria-haspopup="true" aria-owns="help-menu-link-content" title="Help">
+        <span class="aui-icon aui-icon-small aui-iconfont-help">Help</span>
+    </a>
+    <nav id="help-menu-link-content" class="aui-dropdown2 aui-style-default" aria-hidden="true">
+                    <div class="aui-dropdown2-section">
+                                    <strong></strong>
+                                <ul id="help-menu-link-leading" class="aui-list-truncate section-leading first">
+                                            <li>
+        
+            
+<a id="confluence-help-link" href="https://docs.atlassian.com/confluence/docs-55/Getting+Help+And+Support" class="interactive" title="Visit the Confluence documentation home" target="_blank">
+        Online Help
+</a>
+</li>
+                                            <li>
+    
+                
+<a id="keyboard-shortcuts-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="interactive" title="View available keyboard shortcuts (?)">
+        Keyboard Shortcuts
+</a>
+</li>
+                                            <li>
+    
+            
+<a id="feed-builder-link" href="http://192.168.18.250:8090/dashboard/configurerssfeed.action" class="interactive" title="Create your custom RSS feed.">
+        Feed Builder
+</a>
+</li>
+                                            <li>
+    
+            
+<a id="whats-new-menu-link" href="https://docs.atlassian.com/confluence/docs-55/whatsnew/iframe?od=false&amp;a=false" class="interactive" title="">
+        What’s new
+</a>
+</li>
+                                            <li>
+    
+                
+<a id="gadget-directory-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="user-item administration-link  interactive" title="Browse gadgets provided by Confluence">
+        Available Gadgets
+</a>
+</li>
+                                            <li>
+    
+            
+<a id="confluence-about-link" href="http://192.168.18.250:8090/aboutconfluencepage.action" class="interactive" title="Get more information about Confluence">
+        About Confluence
+</a>
+</li>
+                                    </ul>
+            </div>
+            </nav>
+    
+    </li>
+        <li>
+                
+    
+    </li>
+        <li>
+                    
+        
+            
+<a id="notifications-anchor" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="mw-anchor read aui-nav-imagelink" title="Open Notifications (g , n)"><div class="badge-i aui-icon aui-icon-small"><span class="badge-w"><span class="badge">0</span></span></div></a>
+    
+    </li>
+        <li>
+                                            
+        <a id="user-menu-link" class="aui-dropdown2-trigger " aria-haspopup="true" aria-owns="user-menu-link-content" data-username="albatross" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" title="吉娃阿英">
+                    <div class="aui-avatar aui-avatar-small">
+                <div class="aui-avatar-inner">
+                    <img src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/default.png">
+                </div>
+            </div>
+            <span class="aui-icon-dropdown"></span>
+        </a>
+        <nav id="user-menu-link-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                    <ul id="user-menu-link-user-preferences" class="aui-list-truncate section-user-preferences first">
+                                                    <li>
+        
+            
+<a id="create-personal-space-link" href="http://192.168.18.250:8090/spaces/createpersonalspace.action" class="   user-item personal-space create-personal-space-link " title="">
+        Add Personal Space…
+</a>
+</li>
+                                                    <li>
+    
+            
+<a id="view-user-history-link" href="http://192.168.18.250:8090/users/viewuserhistory.action" class="   user-item user-history popup-link " title=" (g , r)">
+        Recently Viewed
+</a>
+</li>
+                                            </ul>
+                </div>
+                            <div class="aui-dropdown2-section">
+                    <ul id="user-menu-link-user-content" class="aui-list-truncate section-user-content">
+                                                    <li>
+    
+            
+<a id="view-user-profile-link" href="http://192.168.18.250:8090/users/viewmyprofile.action" class="   user-item user-profile " title="">
+        Profile
+</a>
+</li>
+                                                    <li>
+    
+            
+<a id="view-mytasks-link" href="http://192.168.18.250:8090/plugins/inlinetasks/mytasks.action" class="   user-item list-user-status " title="">
+        Tasks
+</a>
+</li>
+                                                    <li>
+    
+            
+<a id="user-favourites-link" href="http://192.168.18.250:8090/users/viewmyfavourites.action" class="   user-item " title="">
+        Favourites
+</a>
+</li>
+                                                    <li>
+    
+            
+<a id="user-watches-link" href="http://192.168.18.250:8090/users/viewnotifications.action" class="   user-item " title="">
+        Watches
+</a>
+</li>
+                                                    <li>
+    
+            
+<a id="user-drafts-link" href="http://192.168.18.250:8090/users/viewmydrafts.action" class="   user-item " title="">
+        Drafts
+</a>
+</li>
+                                                    <li>
+    
+            
+<a id="user-network-link" href="http://192.168.18.250:8090/users/viewfollow.action?username=albatross" class="   follow-link " title="">
+        Network
+</a>
+</li>
+                                                    <li>
+    
+            
+<a id="user-settings-link" href="http://192.168.18.250:8090/users/viewmysettings.action" class="   user-item " title="">
+        Settings
+</a>
+</li>
+                                                    <li>
+    
+            
+<a id="upm-requests-link" href="http://192.168.18.250:8090/plugins/servlet/upm/requests?source=header_user" class="    " title="">
+        Atlassian Marketplace
+</a>
+</li>
+                                            </ul>
+                </div>
+                            <div class="aui-dropdown2-section">
+                    <ul id="user-menu-link-user-operations" class="aui-list-truncate section-user-operations">
+                                                    <li>
+    
+            
+<a id="logout-link" href="http://192.168.18.250:8090/logout.action" class="   user-item logout-link " title="">
+        Log Out
+</a>
+</li>
+                                            </ul>
+                </div>
+                    </nav>
+                    
+    </li>
+    </ul>
+</div></div><!-- .aui-header-inner--></nav><!-- .aui-header -->
+    <br class="clear">
+</header>
+
+    
+    	<div class="ia-splitter">
+    		<div class="ia-splitter-left">
+    			<div class="ia-fixed-sidebar" style="width: 285px; visibility: visible; top: 41px; left: 0px;">
+    				
+	    	<div class="acs-side-bar ia-scrollable-section"><div class="acs-side-bar-space-info tipsy-enabled" data-configure-tooltip="Edit space details"><div class="avatar"><div class="space-logo " data-key="ML" data-name="Machine Learning" data-entity-type="confluence.space"><div class="avatar-img-container"><div class="avatar-img-wrapper"><a href="http://192.168.18.250:8090/display/ML" title="Machine Learning"><img class="avatar-img" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/default-space-logo-48.png" alt="Machine Learning"></a></div></div></div></div><div class="name"><a href="http://192.168.18.250:8090/display/ML" title="Machine Learning">Machine Learning</a></div><div class="flyout-handle icon"></div></div><div class="acs-side-bar-content"><div class="acs-nav-wrapper"><div class="acs-nav" data-has-create-permission="true" data-quick-links-state="null" data-nav-type="pages"><div class="acs-nav-sections"><div class="main-links-section "><ul class="acs-nav-list"><li class="acs-nav-item wiki current-item" data-collector-key="spacebar-pages"><a class="acs-nav-item-link tipsy-enabled" href="http://192.168.18.250:8090/collector/pages.action?key=ML" data-collapsed-tooltip="Pages"><span class="icon"></span><span class="acs-nav-item-label">Pages</span></a></li><li class="acs-nav-item blog" data-collector-key="spacebar-blogs"><a class="acs-nav-item-link tipsy-enabled" href="http://192.168.18.250:8090/pages/viewrecentblogposts.action?key=ML" data-collapsed-tooltip="Blog"><span class="icon"></span><span class="acs-nav-item-label">Blog</span></a></li></ul></div><div class="quick-links-wrapper"></div></div></div></div><div class="ia-secondary-container tipsy-enabled" data-tree-type="pages" data-collapsed-tooltip="Child pages"><div class="ia-secondary-header"><h5 class="ia-secondary-header-title pages"><span class="label">Child pages</span></h5></div><div class="ia-secondary-parent-content"><ul class="parent ia-secondary-header-title wiki"><li class="parent-item"><a class="parent-item-link" href="http://192.168.18.250:8090/display/ML/Machine+Learning+Home" title="Machine Learning Home"><span class="icon"></span><span class="label">Machine Learning Home</span></a></li></ul></div><div class="ia-secondary-current-content"><ul class="ia-secondary-currentPage-title wiki current-item"><li><span class="icon"></span><span class="label">Deep Learning Framework : caffe installation guide</span></li></ul></div><div class="ia-secondary-content"><div class="contextual-nav-child-pages"><a class="create-child-page-link" href="http://192.168.18.250:8090/pages/createpage.action?spaceKey=ML&amp;fromPageId=5210410"><span class="icon"></span><span class="label">Create child page</span></a></div></div></div></div><div class="hidden"><a href="http://192.168.18.250:8090/collector/pages.action?key=ML" id="space-pages-link" title=" (g , s)"></a><script type="text/x-template" title="logo-config-content"><h2>Space details</h2><form id="crop-photo-form" class="aui" method="post" action="#"><div id="sidebar-logo-messages"></div><fieldset><div class="field-group"><label for="spaceName">Name</label><input autocomplete="off" name="spaceName" id="spaceName" class="text" maxlength="255" value="{spaceName}"><input type="hidden" name="spaceKey" id="spaceKey" value="ML"><input type="hidden" name="offsetX" id="avatar-offsetX" value="-1"><input type="hidden" name="offsetY" id="avatar-offsetY" value="-1"><input type="hidden" name="width" id="avatar-width" value="-1"><input type="hidden" name="logoType" id="logoType" value="default" data-last-value="default"></div></fieldset></form><form id="upload-logo-form" class="aui" method="POST" action="#" enctype="multipart/form-data"><fieldset class="group"><legend><span>Logo</span></legend><div class="field-group"><input class="upload" type="file" id="upload-logo-input" name="upload-logo-input"></div><small class="hidden"><a href="#" id="reset-logo">Reset to default logo</a></small><div id="image-holder" /></fieldset></form><div id="space-details-actions" class="buttons-container"><div class="buttons"><button class="aui-button save">Save</button><a href="#" class="aui-button aui-button-link cancel">Cancel</a></div></div></script></div></div><div class="space-tools-section"><div id="space-tools-menu-additional-items" class="hidden"><div data-label="Reorder pages" data-class="" data-href="/pages/reorderpages.action?key=ML">Reorder pages</div></div><div id="space-tools-dd-dummy"></div><a id="space-tools-menu-trigger" class="aui-button aui-button-subtle aui-dropdown2-trigger tipsy-enabled" aria-owns="space-tools-dd-dummy" data-collapsed-tooltip="Space tools"><span class="aui-icon aui-icon-small aui-iconfont-configure">Configure</span><span class="label">Space tools</span></a><a class="expand-collapse-trigger" data-tooltip="Collapse sidebar ( [ )"></a></div>
+    
+    			<div class="ia-splitter-handle tipsy-enabled" data-tooltip="Collapse sidebar ( [ )" title=" ([)"><div class="ia-splitter-handle-highlight"></div></div></div>
+    		</div>
+        <!-- \#header -->
+
+        
+        <div id="main" class=" aui-page-panel" style="margin-left: 285px;">
+                <div id="main-header">
+            
+    <div id="navigation" class="content-navigation view">
+                    <ul class="ajs-menu-bar">
+                            <li class="ajs-button normal">
+
+    
+        
+                            
+    
+    
+    <a id="editPageLink" href="http://192.168.18.250:8090/pages/editpage.action?pageId=5210410" rel="nofollow" class="edit" accesskey="e" title="Edit (e)">
+                <span><u>E</u>dit</span>    </a>
+</li>
+                <li class="ajs-button normal">
+
+    
+        
+                            
+    
+    
+    <a id="watch-content-button" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide?watchingPage=false&amp;watchingSpace=false&amp;watchingBlogs=false&amp;isAdmin=false&amp;isBlogPost=false" rel="nofollow" class="watch-menu not-watching" title="Watch (w)">
+                <span><u>W</u>atch</span>    </a>
+</li>
+                        
+        <li class="normal ajs-menu-item">
+        <a id="add-menu-link" class="add hidden ajs-menu-title aui-dropdown2-trigger" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" aria-haspopup="true" aria-owns="add-menu" data-container="#navigation"><span><span>Add</span></span></a>         <div id="add-menu" class="aui-dropdown2 aui-style-default">
+                            <ul id="add-menu-space" class="section-space first aui-dropdown2-section">
+                                            <li>
+
+    
+        
+                            
+    
+    
+    <a id="createPageLink" href="http://192.168.18.250:8090/pages/createpage.action?spaceKey=ML&amp;fromPageId=5210410" rel="nofollow" class="add-page" accesskey="p" title="Add a Page">
+                <span>Page</span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                            
+    
+    
+    <a id="createBlogpostLink" href="http://192.168.18.250:8090/pages/createblogpost.action?spaceKey=ML" rel="nofollow" class="add-news" title="Add a Blog Post (b)">
+                <span>Blog Post</span>    </a>
+</li>
+                                </ul>
+                            <ul id="add-menu-page" class="section-page aui-dropdown2-section">
+                                            <li>
+
+    
+        
+                            
+    
+    
+    <a id="add-comment-menu-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide?showComments=true&amp;showCommentArea=true#addcomment" rel="nofollow" class="add-comment" title="Add a Comment">
+                <span>Comment</span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                            
+    
+    
+    <a id="add-attachment-link" href="http://192.168.18.250:8090/pages/viewpageattachments.action?pageId=5210410" rel="nofollow" class="add-attachment" accesskey="t" title="Add an Attachment">
+                <span>Attachment</span>    </a>
+</li>
+                                </ul>
+                    </div>
+    </li>
+                    
+        <li class="normal ajs-menu-item">
+        <a id="action-menu-link" class="action ajs-menu-title aui-dropdown2-trigger" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" aria-haspopup="true" aria-owns="action-menu" data-container="#navigation"><span><span>Tools</span></span></a>         <div id="action-menu" class="aui-dropdown2 aui-style-default most-right-menu-item">
+                            <ul id="action-menu-primary" class="section-primary first aui-dropdown2-section">
+                                            <li>
+
+    
+        
+                            
+    
+    
+    <a id="view-attachments-link" href="http://192.168.18.250:8090/pages/viewpageattachments.action?pageId=5210410" rel="nofollow" class="action-view-attachments" accesskey="t" title="View Attachments (t)">
+                <span>A<u>t</u>tachments (30)</span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                            
+    
+    
+    <a id="action-view-history-link" href="http://192.168.18.250:8090/pages/viewpreviousversions.action?pageId=5210410" rel="nofollow" class="action-view-history" title="">
+                <span>Page History</span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                            
+    
+    
+    <a id="action-page-permissions-link" href="http://192.168.18.250:8090/pages/viewinfo.action?pageId=5210410" rel="nofollow" class="action-page-permissions" title="Edit restrictions">
+                <span>Restrictions</span>    </a>
+</li>
+                                </ul>
+                            <ul id="action-menu-marker" class="section-marker aui-dropdown2-section">
+                                            <li>
+
+    
+        
+                            
+    
+    
+    <a id="page-favourite" href="http://192.168.18.250:8090/labels/addfavourite.action?entityId=5210410&amp;atl_token=b3dfc2d78d347fa27be228927a6b399a8d7b1329" rel="nofollow" class="action-page-favourite" title="">
+                <span>Favourite</span>    </a>
+</li>
+                                </ul>
+                            <ul id="action-menu-secondary" class="section-secondary aui-dropdown2-section">
+                                            <li>
+
+    
+        
+                            
+    
+    
+    <a id="view-page-info-link" href="http://192.168.18.250:8090/pages/viewinfo.action?pageId=5210410" rel="nofollow" class="action-view-info" title="">
+                <span>Page Information</span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                            
+    
+    
+    <a id="link-to-page-link" href="http://192.168.18.250:8090/pages/viewinfo.action?pageId=5210410" rel="nofollow" class="" title="Link to this Page (k)">
+                <span>Link to this Page…</span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                            
+    
+    
+    <a id="view-in-hierarchy-link" href="http://192.168.18.250:8090/pages/reorderpages.action?key=ML&amp;openId=5210410#selectedPageInHierarchy" rel="nofollow" class="" title="">
+                <span>View in Hierarchy</span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                            
+    
+    
+    <a id="action-view-source-link" href="http://192.168.18.250:8090/plugins/viewsource/viewpagesrc.action?pageId=5210410" rel="nofollow" class="action-view-source popup-link" title="">
+                <span>View Source</span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                            
+    
+    
+    <a id="action-export-pdf-link" href="http://192.168.18.250:8090/spaces/flyingpdf/pdfpageexport.action?pageId=5210410" rel="nofollow" class="" title="">
+                <span>Export to PDF</span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                            
+    
+    
+    <a id="action-export-word-link" href="http://192.168.18.250:8090/exportword?pageId=5210410" rel="nofollow" class="action-export-word" title="">
+                <span>Export to Word</span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                            
+    
+    
+    <a id="import-word-doc" href="http://192.168.18.250:8090/pages/worddav/uploadimport.action?pageId=5210410" rel="nofollow" class="" title="">
+                <span>Import Word Document</span>    </a>
+</li>
+                                </ul>
+                            <ul id="action-menu-modify" class="section-modify aui-dropdown2-section">
+                                            <li>
+
+    
+        
+                            
+    
+    
+    <a id="action-copy-page-link" href="http://192.168.18.250:8090/pages/copypage.action?idOfPageToCopy=5210410&amp;spaceKey=ML" rel="nofollow" class="action-copy" title="">
+                <span>Copy</span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                            
+    
+    
+    <a id="action-move-page-dialog-link" href="http://192.168.18.250:8090/pages/viewpage.action?pageId=5210410" rel="nofollow" class="action-move" title="">
+                <span>Move</span>    </a>
+</li>
+                                </ul>
+                    </div>
+    </li>
+            </ul>
+    </div>
+
+            
+            <div id="title-heading" class="pagetitle with-breadcrumbs">
+                
+                                    <div id="breadcrumb-section">
+                        
+    
+    
+    <ol id="breadcrumbs">
+                    
+                
+        <li class="first">
+                
+
+                    <span class=""><a href="http://192.168.18.250:8090/collector/pages.action?key=ML">Pages</a></span>
+                            
+                
+        </li><li>
+                
+
+                    <span class=""><a href="http://192.168.18.250:8090/display/ML/Machine+Learning+Home">Machine Learning Home</a></span>
+                </li></ol>
+
+
+                    </div>
+                
+                
+        <a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#page-banner-end" class="assistive">Skip to end of banner</a>
+<div id="page-banner-start" class="assistive"></div>
+
+                    
+            <div id="page-metadata-banner" style="visibility: visible;"><ul class="banner"><li id="system-content-items" class="noprint"><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide" title="Restrictions apply" id="content-metadata-page-restrictions" class="hidden"><img class="page-banner-item-icon" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/red_padlock.png" style="height: 16px; width: 16px;"></a><a href="http://192.168.18.250:8090/pages/viewpageattachments.action?pageId=5210410&amp;metadataLink=true" title="30 attachments" id="content-metadata-attachments"><img class="page-banner-item-icon" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/grey_attach.png" style="height: 16px; width: 16px;"></a></li><li class="page-metadata-item noprint has-button" id="content-metadata-jira-wrapper"><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide" title="" id="content-metadata-jira" class="aui-button aui-button-subtle content-metadata-jira tipsy-disabled hidden"><img class="page-banner-item-icon" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/icon-jira-link.png" style="height: 16px; width: 16px;"><span>JIRA links</span></a></li></ul></div>
+            
+
+<a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#page-banner-start" class="assistive">Go to start of banner</a>
+<div id="page-banner-end" class="assistive"></div>
+    
+
+                <h1 id="title-text" class="with-breadcrumbs">
+                                                <a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide">Deep Learning Framework : caffe installation guide</a>
+                                    </h1>
+            </div>
+        </div><!-- \#main-header -->
+        
+        
+
+        <div id="sidebar-container">
+                                                </div><!-- \#sidebar-container -->
+
+        
+    
+
+        
+
+
+
+
+        
+
+    
+    
+        
+    
+    
+                    
+    
+
+                        
+    
+    
+
+    
+
+
+
+
+<div id="content" class="page view">
+    
+
+<div id="action-messages">
+                        </div>
+
+
+
+        <script type="text/x-template" title="searchResultsGrid">
+    <table class="aui">
+        <thead>
+            <tr class="header">
+                <th class="search-result-title">Page Title</th>
+                <th class="search-result-space">Space</th>
+                <th class="search-result-date">Updated</th>
+            </tr>
+        </thead>
+    </table>
+</script>
+<script type="text/x-template" title="searchResultsGridCount">
+    <p class="search-result-count">{0}</p>
+</script>
+<script type="text/x-template" title="searchResultsGridRow">
+    <tr class="search-result">
+        <td class="search-result-title"><a href="{1}" class="content-type-{2}"><span>{0}</span></a></td>
+        <td class="search-result-space"><a class="space" href="/display/{4}/" title="{3}">{3}</a></td>
+        <td class="search-result-date"><span class="date" title="{6}">{5}</span></td>
+    </tr>
+</script>
+        
+    
+            
+
+        
+                            
+    
+
+                    
+
+        
+        <a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#page-metadata-end" class="assistive">Skip to end of metadata</a>
+<div id="page-metadata-start" class="assistive"></div>
+
+    <div class="page-metadata">
+        <ul>
+            <li class="page-metadata-modification-info">
+                
+        
+    
+        
+    
+        
+        
+            Created by <span class="author">     <a href="http://192.168.18.250:8090/display/~partridge" class="url fn confluence-userlink userlink-0" data-username="partridge" title="" data-user-hover-bound="true">罗小涛</a></span>, last modified by <span class="editor">     <a href="http://192.168.18.250:8090/display/~swallow" class="url fn confluence-userlink userlink-1" data-username="swallow" title="" data-user-hover-bound="true">丁祝祥</a></span> on <a class="last-modified" title="Jul 13, 2016 17:37" href="http://192.168.18.250:8090/pages/diffpagesbyversion.action?pageId=5210410&amp;selectedPageVersions=40&amp;selectedPageVersions=41">Jul 13, 2016</a>
+                </li>
+        </ul>
+    </div>
+
+
+<a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#page-metadata-start" class="assistive">Go to start of metadata</a>
+<div id="page-metadata-end" class="assistive"></div>
+
+        
+                                
+        <div id="main-content" class="wiki-content">
+                           
+        <p style="text-align: left;">&nbsp;</p><ul><li><h1 style="text-align: left;" id="DeepLearningFramework:caffeinstallationguide-介绍"><strong>介绍</strong></h1></li></ul><h2 style="text-align: left;" id="DeepLearningFramework:caffeinstallationguide-caffe(ConvolutionalArchitectureforFastFeatureEmbedding)，是一个开源的深度学习的框架，由加州大学伯克利视觉与学习中心开发。"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; caffe</strong>(<span>Convolutional Architecture for Fast Feature Embedding)，是一个开源的深度学习的框架，由加州大学伯克利视觉与学习中心开发。</span></h2><ul><li><h1 style="text-align: left;" id="DeepLearningFramework:caffeinstallationguide-安装指南"><strong>安装指南</strong></h1></li></ul><h2 style="text-align: left;" id="DeepLearningFramework:caffeinstallationguide-下面讲述最基本的caffe安装流程：（提示：安装所需的小于50M的软件及源码可以在本页面tools-&gt;Attachments中下载,vs2013、cuda7.5需分别从ftp://192.168.18.250/开发工具/VisualStudio和/nVidia下载）">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 下面讲述最基本的<strong>caffe</strong>安装流程：（提示：安装所需的小于50M的软件及源码可以在本页面 tools-&gt;Attachments 中下载, vs2013、cuda 7.5 需分别从 <a href="ftp://192.168.18.250/%BF%AA%B7%A2%B9%A4%BE%DF/" class="external-link" rel="nofollow">ftp://192.168.18.250</a>/开发工具 /Visual Studio和/nVidia 下载）</h2><ol style="text-align: left;"><li style="list-style-type: none;background-image: none;"><ol><li><h3 id="DeepLearningFramework:caffeinstallationguide-前期的准备工作">前期的准备工作</h3><ol><li><h4 id="DeepLearningFramework:caffeinstallationguide-安装vs2013，因为编译Caffe需v120编译器">安装 vs2013，因为编译Caffe需 v120 编译器</h4></li><li><h4 id="DeepLearningFramework:caffeinstallationguide-下载解压Caffe源码">下载解压 Caffe 源码</h4></li><li><strong>安装CUDA</strong><br>cuda_7.5.18_win10.exe 见ftp/开发工具/nVidia</li><li><p><strong>将cuda安装目录$CUDA\extras\visual_studio_integration\MSBuildExtensions下的</strong></p><p><img class="confluence-embedded-image" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/image2016-6-28 18-10-9.png" data-image-src="/download/attachments/5210410/image2016-6-28%2018%3A10%3A9.png?version=1&amp;modificationDate=1467108611000&amp;api=v2"></p><p><strong>拷贝到目录C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\BuildCustomizations下</strong></p></li></ol></li><li><h3 id="DeepLearningFramework:caffeinstallationguide-编译前的工作">编译前的工作</h3><ol><li><h4 id="DeepLearningFramework:caffeinstallationguide-拷贝.\windows\CommonSettings.props.example为.\windows\CommonSettings.props">拷贝 .\windows\CommonSettings.props.example 为 &nbsp;.\windows\CommonSettings.props</h4></li><li><h4 id="DeepLearningFramework:caffeinstallationguide-打开.\windows\Caffe.sln">打开 .\windows\Caffe.sln</h4></li><li><h4 id="DeepLearningFramework:caffeinstallationguide-修改CommonSettings.props（行号：7、8），CpuOnlyBuild（只生成CPU版本）改为true，UseCuDNN改为false，使之不依赖Python,MATLAB,CUDA等等：">修改 CommonSettings.props（行号：7、8），CpuOnlyBuild（只生成CPU版本）改为true，UseCuDNN改为false，使之不依赖Python, MATLAB, CUDA等等：</h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<div><div id="highlighter_180173" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">&lt;CpuOnlyBuild&gt;</code><code class="java keyword">true</code><code class="java plain">&lt;/CpuOnlyBuild&gt;</code></div><div class="line number2 index1 alt1"><code class="java plain">&lt;UseCuDNN&gt;</code><code class="java keyword">false</code><code class="java plain">&lt;/UseCuDNN&gt;</code></div></div></td></tr></tbody></table></div></div>
+</div></div></li><li><h4 id="DeepLearningFramework:caffeinstallationguide-设置vs2013工具-&gt;NuGet程序包管理器-&gt;程序包管理器设置">设置 vs2013 工具-&gt;NuGet 程序包管理器-&gt;程序包管理器设置</h4><h4 id="DeepLearningFramework:caffeinstallationguide-"><img class="confluence-embedded-image confluence-thumbnail" width="300" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/image2016-6-28 16-27-6.png" data-image-src="/download/attachments/5210410/image2016-6-28%2016%3A27%3A6.png?version=1&amp;modificationDate=1467102429000&amp;api=v2"></h4></li></ol></li><li><h3 id="DeepLearningFramework:caffeinstallationguide-编译[Release版本]">编译[Release版本]</h3><ol><li><h4 id="DeepLearningFramework:caffeinstallationguide-由于依赖关系，首先生成libcaffe项目[如若出现errorC2220:warningtreatedaserror-no&#39;object&#39;filegenerated；则在c++属性设置中，将treatwarningaserror改为NO]">由于依赖关系，首先生成 libcaffe 项目&nbsp;[如若出现error C2220: warning treated as error - no 'object' file generated；则在c++属性设置中，将treat warning as error改为NO]</h4></li><li><h4 id="DeepLearningFramework:caffeinstallationguide-然后生成caffe项目">然后生成 caffe 项目</h4></li><li><h4 id="DeepLearningFramework:caffeinstallationguide-再生成其余所有的项目（由于项目配置中没有依赖python,MATLAB等，所以pycaffe这些都会编译成功，但是并不能使用）">再生成其余所有的项目（由于项目配置中没有依赖python, MATLAB等， 所以pycaffe这些都会编译成功， 但是并不能使用）</h4></li></ol></li></ol></li></ol><ul><li><strong style="font-size: 24.0px;line-height: 1.25;">Demo</strong></li></ul><h2 style="text-align: left;" id="DeepLearningFramework:caffeinstallationguide-训练和测试以mnist数据集为例:">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;训练和测试以 <strong>mnist</strong> 数据集为例:</h2><ol style="text-align: left;"><li style="list-style-type: none;background-image: none;"><ol><li><h3 style="text-align: left;" id="DeepLearningFramework:caffeinstallationguide-准备数据">准备数据</h3><ol><li><h4 id="DeepLearningFramework:caffeinstallationguide-下载数据：从mnistwebsite下载以下数据（包括训练集和测试集）并解压，得到以下四个文件（本文中文件被解压到目录下）">下载数据：从 <a href="http://yann.lecun.com/exdb/mnist/" class="external-link" rel="nofollow">mnist website</a> 下载以下数据（包括训练集和测试集）并解压， 得到以下四个文件（本文中文件被解压到目录下）</h4><p>train-images-idx3-ubyte.gz&nbsp;&nbsp;&nbsp;&nbsp; // training set iamges</p><p>train-labels-idx1-ubyte.gz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // training set labels</p><p>t10k-images-idx3-ubyte.gz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // test set images</p><p>t10k-labels-idx1-ubyte.gz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // test set labels</p></li><li><strong>将解压得到的四个文件夹拷贝到caffe-windows\data\mnist中</strong><br><img class="confluence-embedded-image" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/Data.png" data-image-src="/download/attachments/5210410/Data.png?version=1&amp;modificationDate=1468293606000&amp;api=v2"></li><li><h4 id="DeepLearningFramework:caffeinstallationguide-转换数据（由于caffe目前只支持两种数据格式，lmdb和hdf5）：在cmd中切换到caffe-windows\Build\x64\Release目录下输入">转换数据（由于caffe 目前只支持两种数据格式， lmdb 和hdf5）：在 cmd 中切换到 caffe-windows\Build\x64\Release 目录下输入</h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<div><div id="highlighter_567873" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">convert_mnist_data ..\..\..\data\mnist\train-images-idx3-ubyte\train-images.idx3-ubyte ..\..\..\data\mnist\train-labels-idx1-ubyte\train-labels.idx1-ubyte ..\..\..\examples\mnist\mnist_train_lmdb</code></div><div class="line number2 index1 alt1"><code class="java plain">convert_mnist_data ..\..\..\data\mnist\t10k-images-idx3-ubyte\t10K-images.idx3-ubyte ..\..\..\data\mnist\t10k-labels-idx1-ubyte\t10K-labels.idx1-ubyte ..\..\..\examples\mnist\mnist_test_lmdb</code></div></div></td></tr></tbody></table></div></div>
+</div></div><p>convert_mnist_data 是caffe专为mnist数据库的转换数据的功能， 其命令格式为 ： convert_mnist_data&nbsp; [FLAGS] <span class="confluence-link"> 输入图像数据文件</span>&nbsp; <span class="confluence-link">输入label文件</span>&nbsp; 数据转换后保存的文件夹的名</p></li><li><h4 id="DeepLearningFramework:caffeinstallationguide-为什么只支持lmdb和hdf5格式的文件">为什么只支持lmdb和hdf5格式的文件</h4><h4 id="DeepLearningFramework:caffeinstallationguide-lmdb和hdf5都是可SequentialRead的数据：速度优势明显，可达到150M/s">lmdb和hdf5都是可Sequential Read的数据：速度优势明显， 可达到150M/s</h4></li></ol></li><li><h3 id="DeepLearningFramework:caffeinstallationguide-训练网络">训练网络</h3><ol><li><h4 id="DeepLearningFramework:caffeinstallationguide-修改接口文件lenet_solver.prototxt的参数。lenet_solver.prototxt文件目录为：examples/mnist/">修改接口文件lenet_solver.prototxt的参数。&nbsp;lenet_solver.prototxt文件目录为：examples/mnist/</h4><img class="confluence-embedded-image" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/caffe_interface.PNG" data-image-src="/download/attachments/5210410/caffe_interface.PNG?version=1&amp;modificationDate=1467114062000&amp;api=v2"><br>其中第一个 net 就是定义网络结构的文件的路径， 这里是相对于 caffe.exe 的路径， 根据个人的路径进行设置<br><img class="confluence-embedded-image" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/image2016-6-28 17-35-30.png" data-image-src="/download/attachments/5210410/image2016-6-28%2017%3A35%3A30.png?version=1&amp;modificationDate=1467106533000&amp;api=v2"><br><img class="confluence-embedded-image" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/image2016-6-28 17-35-48.png" data-image-src="/download/attachments/5210410/image2016-6-28%2017%3A35%3A48.png?version=1&amp;modificationDate=1467106551000&amp;api=v2"><br><img class="confluence-embedded-image" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/image2016-6-28 17-38-28.png" data-image-src="/download/attachments/5210410/image2016-6-28%2017%3A38%3A28.png?version=1&amp;modificationDate=1467106710000&amp;api=v2"></li><li><p><strong><strong>找到定义网络结构的文件： lenet_train_test.prototxt</strong></strong></p><p><strong><img class="confluence-embedded-image" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/image2016-7-12 15-27-17.png" data-image-src="/download/attachments/5210410/image2016-7-12%2015%3A27%3A17.png?version=1&amp;modificationDate=1468308445000&amp;api=v2"></strong></p><p>上面这张截图只是这个文件的一部分， 这里定义了两个 layer 分别为训练和测试， 这里面需要手动进行训练集和测试集数据的定位， 也是caffe.exe的相对路径</p></li><li><p><strong>输入caffe 训练数据的命令</strong></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<div><div id="highlighter_235050" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">caffe train -solver ../../../examples/mnist/lenet_solver.prototxt</code></div></div></td></tr></tbody></table></div></div>
+</div></div></li><li><h4 id="DeepLearningFramework:caffeinstallationguide-训练完成后，得到以下文件，.caffemodel就是训练得到的模型（5000与10000的差别是在训练迭代次数不同而得到的模型），该模型的位置在之前的snapshot_prefix的路径目录下">训练完成后，得到以下文件， .caffemodel 就是训练得到的模型（5000与10000的差别是在训练迭代次数不同而得到的模型），该模型的位置在之前的snapshot_prefix的路径目录下</h4><p>lenet_iter_5000.caffemodel</p><p>lenet_iter_5000.solverstate</p><p>lenet_iter_10000.caffemodel</p><p>lenet_iter_10000.solverstate</p></li></ol></li><li><h3 id="DeepLearningFramework:caffeinstallationguide-测试以上网络模型的正确性">测试以上网络模型的正确性</h3><h3 id="DeepLearningFramework:caffeinstallationguide-将上述训练得到的4个文件拷贝到examples/mnist/下，然后在cmd中切换到caffe-windows\Build\x64\Release目录下输入">将上述训练得到的4个文件拷贝到examples/mnist/下，然后在 cmd 中切换到 caffe-windows\Build\x64\Release 目录下输入</h3><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<div><div id="highlighter_632980" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">caffe test -model ../../../examples/mnist/lenet_train_test.prototxt -weights ../../../examples/mnist/lenet_iter_10000.caffemodel -iterations </code><code class="java value">100</code></div></div></td></tr></tbody></table></div></div>
+</div></div><h2 id="DeepLearningFramework:caffeinstallationguide-.1"><img class="confluence-embedded-image" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/image2016-6-28 17-41-38.png" data-image-src="/download/attachments/5210410/image2016-6-28%2017%3A41%3A38.png?version=1&amp;modificationDate=1467106901000&amp;api=v2"></h2></li></ol></li></ol><ul><li><h1 style="text-align: left;" id="DeepLearningFramework:caffeinstallationguide-Python接口"><strong>Python接口</strong></h1></li></ul><h2 style="text-align: left;" id="DeepLearningFramework:caffeinstallationguide-caffe目前支持3种接口：控制台、Python、MATLAB"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; caffe</strong>目前支持3种接口：控制台、Python、MATLAB</h2><ol style="text-align: left;"><li style="list-style-type: none;background-image: none;"><ol><li><h3 id="DeepLearningFramework:caffeinstallationguide-下载安装python2.7">下载安装 <a href="http://conda.pydata.org/miniconda.html" class="external-link" rel="nofollow">python 2.7</a></h3></li><li><h3 id="DeepLearningFramework:caffeinstallationguide-安装完成后在cmd中输入以下两条命令">安装完成后在cmd 中输入以下两条命令</h3><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<div><div id="highlighter_720248" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">conda install --yes numpy scipy matplotlib scikit-image pip</code></div><div class="line number2 index1 alt1"><code class="java plain">pip install protobuf</code></div></div></td></tr></tbody></table></div></div>
+</div></div></li><li><h3 id="DeepLearningFramework:caffeinstallationguide-设置python环境变量">设置 python 环境变量</h3>Set PythonPath environment variable to point&nbsp; &lt;caffe_root&gt;\Build\x64\Release\pycaffe</li><li><h3 id="DeepLearningFramework:caffeinstallationguide-修改配置文件CommonSettings.props如下">修改配置文件CommonSettings.props 如下</h3><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<div><div id="highlighter_676339" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">&lt;PythonSupport&gt;</code><code class="java keyword">true</code><code class="java plain">&lt;/PythonSupport&gt;</code></div><div class="line number2 index1 alt1"><code class="java plain">&lt;PythonDir&gt;D:\Miniconda2\&lt;/PythonDir&gt;&nbsp;&nbsp; &lt;!--添加Python路径--&gt;</code></div></div></td></tr></tbody></table></div></div>
+</div></div></li></ol></li></ol><ul><li><h1 style="text-align: left;" id="DeepLearningFramework:caffeinstallationguide-CUDA加速"><strong>CUDA加速</strong></h1></li></ul><h2 style="text-align: left;" id="DeepLearningFramework:caffeinstallationguide-caffe支持CUDA加速"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; caffe</strong>支持CUDA加速</h2><ol style="text-align: left;"><li style="list-style-type: none;background-image: none;"><ol><li><h3 id="DeepLearningFramework:caffeinstallationguide-下载安装CUDAToolkit7.5并添加cuDNNv4forwindows到CUDA_PATH目录下">下载安装<a href="https://developer.nvidia.com/cuda-toolkit" class="external-link" rel="nofollow">CUDA Toolkit 7.5</a> 并添加<a href="https://developer.nvidia.com/cuda-toolkit" class="external-link" rel="nofollow"> cuDNN v4 for windows</a> 到 CUDA_PATH 目录下</h3></li><li><h3 id="DeepLearningFramework:caffeinstallationguide-修改设置文件CommonSettings.props如下">修改设置文件&nbsp;CommonSettings.props 如下</h3><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<div><div id="highlighter_308283" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">&lt;CpuOnlyBuild&gt;</code><code class="java keyword">false</code><code class="java plain">&lt;/CpuOnlyBuild&gt;&nbsp; </code></div><div class="line number2 index1 alt1"><code class="java plain">&lt;UseCuDNN&gt;</code><code class="java keyword">true</code><code class="java plain">&lt;/UseCuDNN&gt;</code></div><div class="line number3 index2 alt2"><code class="java plain">&lt;CuDnnPath&gt;D:\NVIDIA\cudnn\&lt;/CuDnnPath&gt; &lt;!--添加CUDA路径--&gt;</code></div></div></td></tr></tbody></table></div></div>
+</div></div></li><li><h3 id="DeepLearningFramework:caffeinstallationguide-GPU模式下训练和测试网络">GPU模式下训练和测试网络</h3><ol><li><h4 id="DeepLearningFramework:caffeinstallationguide-训练">训练</h4><ol><li><h5 id="DeepLearningFramework:caffeinstallationguide-下载和转换数据同前">下载和转换数据同前</h5><ol><li><p>首先修改examples/mnist/lenet_solver.prototxt <br><img class="confluence-embedded-image" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/image2016-6-28 17-53-17.png" data-image-src="/download/attachments/5210410/image2016-6-28%2017%3A53%3A17.png?version=1&amp;modificationDate=1467107600000&amp;api=v2"></p></li></ol></li><li><h5 id="DeepLearningFramework:caffeinstallationguide-在cmdcaffe-windows\Build\x64\Release目录下输入">在cmd caffe-windows\Build\x64\Release目录下输入</h5><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<div><div id="highlighter_794298" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">caffe train -solver ../../../examples/mnist/lenet_solver.prototxt -gpu </code><code class="java value">0</code></div></div></td></tr></tbody></table></div></div>
+</div></div></li></ol></li><li><h4 id="DeepLearningFramework:caffeinstallationguide-测试网络在cmdcaffe-windows\Build\x64\Release目录下输入">测试网络<br>在cmd caffe-windows\Build\x64\Release目录下输入</h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<div><div id="highlighter_954408" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">caffe test -model examples/mnist/lenet_train_test.prototxt -weights examples/mnist/lenet_iter_10000.caffemodel -gpu </code><code class="java value">0</code><code class="java plain">-iterations </code><code class="java value">100</code></div></div></td></tr></tbody></table></div></div>
+</div></div></li></ol></li></ol></li></ol><ul><li><h1 style="text-align: left;" id="DeepLearningFramework:caffeinstallationguide-坑大杂烩"><strong>坑大杂烩</strong></h1><ol><li><h2 id="DeepLearningFramework:caffeinstallationguide-&lt;cudnn.h&gt;cannotfind:">&nbsp;&lt;cudnn.h&gt; cannot find:</h2><p>-&gt;CommonSettings.props 中添加 cudnn 文件路径</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<div><div id="highlighter_140237" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">&lt;CuDnnPath&gt;D:\NVIDIA\cudnn\&lt;/CuDnnPath&gt;&lt;!--添加cudnn路径--&gt;</code></div></div></td></tr></tbody></table></div></div>
+</div></div></li><li><h2 id="DeepLearningFramework:caffeinstallationguide-error：">error：<img class="confluence-embedded-image" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/image2016-6-28 18-9-34.png" data-image-src="/download/attachments/5210410/image2016-6-28%2018%3A9%3A34.png?version=1&amp;modificationDate=1467108577000&amp;api=v2"></h2><p>将cuda安装目录$CUDA\extras\visual_studio_integration\MSBuildExtensions下的</p><p><img class="confluence-embedded-image" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/image2016-6-28 18-10-9.png" data-image-src="/download/attachments/5210410/image2016-6-28%2018%3A10%3A9.png?version=1&amp;modificationDate=1467108611000&amp;api=v2"></p><p>拷贝到目录C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\BuildCustomizations下</p></li><li><h2 id="DeepLearningFramework:caffeinstallationguide-在GPU模式下训练时">在GPU模式下训练时</h2><p>error:<img class="confluence-embedded-image" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/image2016-6-28 20-40-33.png" data-image-src="/download/attachments/5210410/image2016-6-28%2020%3A40%3A33.png?version=1&amp;modificationDate=1467117636000&amp;api=v2"></p><p>解决：根据机器显卡的类型来修改CommonSettings.props：N卡参数可以从 <a href="https://en.wikipedia.org/wiki/CUDA" class="external-link" rel="nofollow">https://en.wikipedia.org/wiki/CUDA</a> 查询，compute_**, “ ** ”是compute&nbsp; capability 参数，且只能有一个。</p><p>如 GeForece GTX 650</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<div><div id="highlighter_299964" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">&lt;CudaArchitecture&gt;compute_30,sm_30&lt;/CudaArchitecture&gt;</code></div></div></td></tr></tbody></table></div></div>
+</div></div><p>若同时添加多个类型如下，则会出错<strong><br></strong></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<div><div id="highlighter_336141" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">&lt;CudaArchitecture&gt;compute_30,sm_30;compute_35,sm_35;compute_52,sm_52&lt;/CudaArchitecture&gt;</code></div></div></td></tr></tbody></table></div></div>
+</div></div></li></ol></li><li><h1 style="text-align: left;" id="DeepLearningFramework:caffeinstallationguide-参考"><strong>参考</strong></h1><ol><li style="text-align: left;"><a href="https://github.com/BVLC/caffe/tree/windows" class="external-link" rel="nofollow">caffe windows 安装参考教程</a></li><li style="text-align: left;"><a href="http://caffe.berkeleyvision.org/tutorial/interfaces.html" class="external-link" rel="nofollow">caffe cmd命令行训练测试参考教程</a></li><li style="text-align: left;"><a href="https://192.168.18.250/svn/svn/Students_Projects/Proj_103/NSFC_2015/SOURCE/caffe-windows.zip" class="external-link" rel="nofollow">Caffe源码实验室SVN下载</a></li></ol></li></ul>
+
+                
+        
+    
+        </div>
+
+        <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide"
+    dc:identifier="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide"
+    dc:title="Deep Learning Framework : caffe installation guide"
+    trackback:ping="http://192.168.18.250:8090/rpc/trackback/5210410"/>
+</rdf:RDF>
+-->
+
+                        
+    
+
+
+
+<div id="likes-and-labels-container"><div id="likes-section"><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide" class="like-button">Like</a><span class="like-summary">Be the first to like this</span></div><div id="labels-section" class="pageSection group">
+    <div class="labels-section-content content-column" entityid="5210410" entitytype="page">
+	<div class="labels-content">
+		
+    <ul class="label-list label-list-right  has-pen">
+            <li class="no-labels-message">
+            No labels
+        </li>
+                <li class="labels-edit-container">
+            <a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="show-labels-editor editor-icon" title="Edit Labels (l)">
+                <span class="icon icon-edit">Edit Labels</span>
+            </a>
+        </li>
+        </ul>
+
+    </div>
+</div></div></div>
+        
+		
+            
+
+
+
+
+            
+    
+
+
+
+
+
+
+
+
+                    
+    
+<div id="comments-section" class="pageSection group">
+    
+    
+    
+    
+            <div class="bottom-comment-panels comment-panels">
+                                    
+    
+
+                    
+    
+
+
+    
+
+<div class="quick-comment-container comment add"><p class="comment-user-logo"><a class="userLogoLink userlink-2" data-username="albatross" href="http://192.168.18.250:8090/users/editmyprofilepicture.action" title="" data-user-hover-bound="true"><img class="userLogo logo defaultLogo" src="./Deep Learning Framework _ caffe installation guide - Machine Learning - Confluence_files/add_profile_pic.png" alt="User icon: Add a picture of yourself" title=""></a></p><div class="quick-comment-body"><div class="quick-comment-loading-container" style="display:none;"></div><div id="editor-messages"></div><div id="all-messages"></div><form style="display:block;" class="quick-comment-form aui" method="post" name="inlinecommentform" action="http://192.168.18.250:8090/pages/doaddcomment.action?pageId=5210410"><div title="Add a Comment (m)" class="quick-comment-prompt"><span>Write a comment…</span></div></form></div></div>
+
+    
+            </div>
+    
+                        <div id="comments-actions" class="aui-toolbar noprint" style="display: none;">
+                <p class="toolbar-group">
+                    <span class="toolbar-item"><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide?showComments=true&amp;showCommentArea=true#addcomment" id="add-comment-rte" accesskey="m" class="toolbar-trigger">Add Comment</a></span>
+                </p>
+            </div>
+            </div>
+
+
+                
+    
+            
+</div>
+
+
+    
+
+
+
+
+    
+    
+
+    
+    
+    
+
+
+    
+<div id="space-tools-web-items" class="hidden">
+                <div data-label="Overview" data-href="/spaces/viewspacesummary.action?key=ML">Overview</div>
+            <div data-label="Content Tools" data-href="/pages/reorderpages.action?key=ML">Content Tools</div>
+    </div>
+
+
+
+
+    </div><!-- \#main -->
+        
+    
+        
+            
+<div id="footer" role="contentinfo" style="margin-left: 285px;">
+    <section class="footer-body">
+
+                                        
+        
+
+        <ul id="poweredby">
+            <li class="noprint">Powered by <a href="http://www.atlassian.com/software/confluence" class="hover-footer-link">Atlassian Confluence</a> <span id="footer-build-information">5.5.4</span>, <a href="http://www.atlassian.com/software/confluence/overview/team-collaboration-software?utm_source=confluence-footer" class="hover-footer-link">Team Collaboration Software</a></li>
+            <li class="print-only">Printed by Atlassian Confluence 5.5.4, Team Collaboration Software.</li>
+            <li class="noprint"><a href="https://jira.atlassian.com/browse/CONF" class="hover-footer-link">Report a bug</a></li>
+            <li class="noprint"><a href="http://www.atlassian.com/about/connected.jsp?s_kwcid=Confluence-stayintouch" class="hover-footer-link">Atlassian News</a></li>
+        </ul>
+
+        
+
+        <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+
+                    
+        
+    </section>
+</div>
+
+            
+    
+</div>
+
+</div><!-- \#full-height-container -->
+</div><!-- \#page -->
+
+
+<div id="content-hover-0" class="ajs-content-hover" style="display: none;"><div class="contents" style="width: 300px;"></div></div><div id="content-hover-1" class="ajs-content-hover" style="display: none;"><div class="contents" style="width: 300px;"></div></div><div id="content-hover-2" class="ajs-content-hover" style="display: none;"><div class="contents" style="width: 300px;"></div></div><div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><div id="content-hover-shadow" style="display: none;"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div><div id="cw-notification-container"></div><div class="qr-notice aui-message warning"></div><div id="fileuploadShim" style="position: relative; z-index: 0;"></div><div id="p1avvboqju13n217911tcgn8mpfd0_html5_container" class="plupload html5" style="position: absolute; background: transparent; width: 1903px; height: 0px; overflow: hidden; z-index: -1; opacity: 0; top: 5149px; left: 0px;"><input id="p1avvboqju13n217911tcgn8mpfd0_html5" style="font-size: 999px; position: absolute; width: 100%; height: 100%;" type="file" accept="" multiple="multiple"></div><div id="editor-preload-container" style="display: none;">
+<div class="hidden">
+        
+
+
+<content tag="breadcrumbs">
+    
+    
+    <ol id="quickedit-breadcrumbs">
+                    
+                
+        <li class="first">
+                
+
+                    <span class=""><a href="http://192.168.18.250:8090/display/ML">Machine Learning</a></span>
+                            
+                
+        </li><li>
+                
+
+                    <span class=""><a href="http://192.168.18.250:8090/collector/pages.action?key=ML">Pages</a></span>
+                            
+                
+        </li><li>
+                
+
+                    <span class=""><a href="http://192.168.18.250:8090/display/ML/Machine+Learning+Home">Machine Learning Home</a></span>
+                            
+                
+        </li><li>
+                
+
+                    <span class="edited-page-title"><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide">Deep Learning Framework : caffe installation guide</a></span>
+                </li></ol>
+
+</content>
+</div>
+
+
+
+<div id="editor-precursor">
+    <div class="cell">
+    
+        <div id="content-title-div">
+                                                                                                                                        
+
+<div class="field-group
+    ">
+    <label id="content-title-label" for="content-title">
+    
+        </label>
+
+                <input type="text" name="title" id="content-title" value="Deep Learning Framework : caffe installation guide" tabindex="1" class="text   pagetitle" autocomplete="off" placeholder="">
+                      </div>        </div>
+
+        <div id="editor-messages">
+            
+                                
+<div id="heartbeat-div" class="hidden">
+    <div class="aui-message info closeable">
+            <span class="aui-icon icon-info"></span>
+        This page is also being edited by <span id="other-users-span"></span>. Your changes will be merged with theirs when you save.
+    </div>
+</div>
+
+
+        </div>
+        <div id="all-messages">
+            
+<div id="action-messages">
+                        </div>
+        </div>
+    </div>
+</div>                                                                                            
+
+<script type="text/x-template" title="editor-css">
+    <link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/1.0/_/download/batch/confluence.web.resources:panel-styles/confluence.web.resources:panel-styles.css" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/1.0/_/download/batch/confluence.web.resources:content-styles/confluence.web.resources:content-styles.css" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/5.4.4-CONFDEV-21873/_/download/batch/com.atlassian.auiplugin:aui-page-typography/com.atlassian.auiplugin:aui-page-typography.css" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/5.4.4-CONFDEV-21873/_/download/batch/com.atlassian.auiplugin:aui-avatars/com.atlassian.auiplugin:aui-avatars.css" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/5.4.4-CONFDEV-21873/_/download/batch/com.atlassian.auiplugin:aui-page-layout/com.atlassian.auiplugin:aui-page-layout.css" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/5.5.4/_/download/batch/com.atlassian.confluence.editor:editor-content-styles/com.atlassian.confluence.editor:editor-content-styles.css" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/1.0.21/_/download/batch/com.atlassian.confluence.confluence-editor-hide-tools:confluence-editor-hide-tools-iframe-resources/com.atlassian.confluence.confluence-editor-hide-tools:confluence-editor-hide-tools-iframe-resources.css" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/2.3.9/_/download/batch/com.atlassian.confluence.plugins.confluence-software-blueprints:common-resources/com.atlassian.confluence.plugins.confluence-software-blueprints:common-resources.css" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/5.4.4-CONFDEV-21873/_/download/batch/com.atlassian.auiplugin:aui-lozenge/com.atlassian.auiplugin:aui-lozenge.css" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/2.15/_/download/batch/com.atlassian.confluence.plugins.status-macro:view_content_status/com.atlassian.confluence.plugins.status-macro:view_content_status.css" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/2.15/_/download/batch/com.atlassian.confluence.plugins.status-macro:editor_content_status/com.atlassian.confluence.plugins.status-macro:editor_content_status.css" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/5.5.4/_/download/batch/com.atlassian.confluence.plugins.confluence-templates:variable-editor-content-styles/com.atlassian.confluence.plugins.confluence-templates:variable-editor-content-styles.css" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/3.6.10/_/download/batch/confluence.extra.attachments:attachments-css/confluence.extra.attachments:attachments-css.css" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/5.5.64/_/download/batch/com.atlassian.confluence.plugins.confluence-inline-tasks:inline-tasks-styles/com.atlassian.confluence.plugins.confluence-inline-tasks:inline-tasks-styles.css" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/5.5.64/_/download/batch/com.atlassian.confluence.plugins.confluence-inline-tasks:editor-autocomplete-date-css/com.atlassian.confluence.plugins.confluence-inline-tasks:editor-autocomplete-date-css.css" media="all">
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/5.5.64/_/download/batch/com.atlassian.confluence.plugins.confluence-inline-tasks:editor-autocomplete-date-css/com.atlassian.confluence.plugins.confluence-inline-tasks:editor-autocomplete-date-css.css?conditionalComment=lte+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/5.5.4/_/download/batch/com.atlassian.confluence.plugins.confluence-page-layout:editor-pagelayout-content-styles/com.atlassian.confluence.plugins.confluence-page-layout:editor-pagelayout-content-styles.css" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/3.0.3/_/download/batch/com.atlassian.confluence.plugins.confluence-business-blueprints:sharelinks-urlmacro-editor-resources/com.atlassian.confluence.plugins.confluence-business-blueprints:sharelinks-urlmacro-editor-resources.css" media="all">
+<link type="text/css" rel="stylesheet" href="/s/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/1/_/styles/colors.css?spaceKey=ML" media="all">
+<link type="text/css" rel="stylesheet" href="/s/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/1.0/_/download/resources/com.atlassian.confluence.themes.default:styles/default-theme.css" media="all">
+
+</script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+<div class="editor-container">
+
+        
+            <div id="image-properties-tab-items" class="hidden">
+                <div title="Effects" data-weight="10">image-effects</div>
+            <div title="Title" data-weight="20">image-attributes</div>
+    </div>
+            
+
+<div id="link-browser-tab-items" class="hidden">
+                <div title="Search" data-weight="10">search</div>
+            <div title="Recently viewed" data-weight="20">recentlyviewed</div>
+            <div title="Attachments" data-weight="30">attachments</div>
+            <div title="Web link" data-weight="40">weblink</div>
+            <div title="Advanced" data-weight="50">advanced</div>
+    </div>
+            
+
+
+
+
+
+
+
+
+
+
+
+        <div id="toolbar">
+        <div id="rte-toolbar" class="aui-toolbar aui-toolbar2">
+
+            <div class="aui-toolbar2-primary">
+                <ul class="aui-buttons">
+                                        <li id="format-dropdown" class="toolbar-item toolbar-dropdown">
+                        <div class="aui-dd-parent">
+                            <a id="format-dropdown-display" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="toolbar-trigger aui-dd-trigger aui-button" data-control-id="formatselect">
+                                <span class="dropdown-text">Paragraph</span>
+                                    <span class="icon icon-dropdown "></span>
+                            </a>
+                            <ul id="format-dropdown-display-menu" class="aui-dropdown hidden">
+                                    <li class="dropdown-item format-p" data-format="p" data-tooltip="Paragraph (Ctrl+0)">
+        <a class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">Paragraph</a>
+    </li>
+                                    <li class="dropdown-item format-h1" data-format="h1" data-tooltip="Heading 1 (Ctrl+1)">
+        <a class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">Heading 1</a>
+    </li>
+                                    <li class="dropdown-item format-h2" data-format="h2" data-tooltip="Heading 2 (Ctrl+2)">
+        <a class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">Heading 2</a>
+    </li>
+                                    <li class="dropdown-item format-h3" data-format="h3" data-tooltip="Heading 3 (Ctrl+3)">
+        <a class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">Heading 3</a>
+    </li>
+                                    <li class="dropdown-item format-h4" data-format="h4" data-tooltip="Heading 4 (Ctrl+4)">
+        <a class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">Heading 4</a>
+    </li>
+                                    <li class="dropdown-item format-h5" data-format="h5" data-tooltip="Heading 5 (Ctrl+5)">
+        <a class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">Heading 5</a>
+    </li>
+                                    <li class="dropdown-item format-h6" data-format="h6" data-tooltip="Heading 6 (Ctrl+6)">
+        <a class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">Heading 6</a>
+    </li>
+                                    <li class="dropdown-item format-pre" data-format="pre" data-tooltip="Preformatted (Ctrl+7)">
+        <a class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">Preformatted</a>
+    </li>
+                                    <li class="dropdown-item format-blockquote" data-format="blockquote" data-tooltip="Quote (Ctrl+8)">
+        <a class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">Quote</a>
+    </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <ul class="aui-buttons">
+                    
+                <li class="toolbar-item aui-button" id="rte-button-bold" data-tooltip="Bold (Ctrl+B)">
+        <a class="toolbar-trigger" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" data-control-id="bold">
+                <span class="icon icon-bold ">Bold</span>
+        </a>
+    </li>
+                    
+                <li class="toolbar-item aui-button" id="rte-button-italic" data-tooltip="Italic (Ctrl+I)">
+        <a class="toolbar-trigger" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" data-control-id="italic">
+                <span class="icon icon-italic ">Italic</span>
+        </a>
+    </li>
+                    
+                <li class="toolbar-item aui-button" id="rte-button-underline" data-tooltip="Underline (Ctrl+U)">
+        <a class="toolbar-trigger" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" data-control-id="underline">
+                <span class="icon icon-underline ">Underline</span>
+        </a>
+    </li>
+                                        <li id="color-picker-control" class="toolbar-item toolbar-splitbutton">
+                        <a class="toolbar-trigger aui-button" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" id="rte-button-color" data-color="003366" data-tooltip="Colour">
+                                <span class="icon icon-textcolor ">Colour picker</span>
+                            <span class="selected-color"></span>
+                        </a>
+                        <div class="aui-dd-parent">
+                            <a class="toolbar-trigger aui-dd-trigger aui-button" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" id="rte-button-color-selector" data-control-id="colorSelector" data-tooltip="More colours">
+                                    <span class="icon icon-dropdown ">More colours</span>
+                            </a>
+                            <div class="color-picker-container">
+                                <div class="color-picker aui-dropdown hidden">
+                                    <ul>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #000000" data-color="000000">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #993300" data-color="993300">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #333300" data-color="333300">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #003300" data-color="003300">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #003366" data-color="003366">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #000080" data-color="000080">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #333399" data-color="333399">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #333333" data-color="333333">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #800000" data-color="800000">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #FF6600" data-color="FF6600">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #808000" data-color="808000">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #008000" data-color="008000">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #008080" data-color="008080">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #0000FF" data-color="0000FF">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #666699" data-color="666699">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #808080" data-color="808080">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #FF0000" data-color="FF0000">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #FF9900" data-color="FF9900">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #99CC00" data-color="99CC00">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #339966" data-color="339966">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #33CCCC" data-color="33CCCC">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #3366FF" data-color="3366FF">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #800080" data-color="800080">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #999999" data-color="999999">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #FF00FF" data-color="FF00FF">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #FFCC00" data-color="FFCC00">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #FFFF00" data-color="FFFF00">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #00FF00" data-color="00FF00">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #00FFFF" data-color="00FFFF">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #00CCFF" data-color="00CCFF">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #993366" data-color="993366">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #C0C0C0" data-color="C0C0C0">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #FF99CC" data-color="FF99CC">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #FFCC99" data-color="FFCC99">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #FFFF99" data-color="FFFF99">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #CCFFCC" data-color="CCFFCC">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #CCFFFF" data-color="CCFFFF">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #99CCFF" data-color="99CCFF">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #CC99FF" data-color="CC99FF">&nbsp;</a></li>
+            <li><a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" style="background-color: #FFFFFF" data-color="FFFFFF">&nbsp;</a></li>
+    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="more-menu" class="toolbar-item toolbar-dropdown">
+                        <div class="aui-dd-parent">
+                            <a id="rte-button-more" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="toolbar-trigger aui-dd-trigger aui-button" data-tooltip="More">
+                                    <span class="icon icon-more ">Formatting</span>
+                                    <span class="icon icon-dropdown "></span>
+                            </a>
+                            <div id="rte-button-more-menu" class="aui-dropdown grouped hidden">
+                                <div class="grouped-dropdown-item">
+                                    <ul>
+                                                                <li class="dropdown-item more-menu-trigger" data-control-id="strikethrough" data-tooltip="Strikethrough (Ctrl+Shift+S)">
+        <a id="rte-strikethrough" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+                <span class="icon icon-check hidden"></span>
+Strikethrough
+        </a>
+    </li>
+                                                                 <li class="dropdown-item more-menu-trigger" data-control-id="sub" data-tooltip="">
+        <a id="rte-sub" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+                <span class="icon icon-check hidden"></span>
+Subscript
+        </a>
+    </li>
+                                                                 <li class="dropdown-item more-menu-trigger" data-control-id="sup" data-tooltip="">
+        <a id="rte-sup" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+                <span class="icon icon-check hidden"></span>
+Superscript
+        </a>
+    </li>
+                                                        <li class="dropdown-item more-menu-trigger" data-control-id="monospace" data-tooltip="Format text with monospaced font">
+        <a id="rte-monospace" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+                <span class="icon icon-check hidden"></span>
+Monospace
+        </a>
+    </li>
+
+                                                                                                                    </ul>
+                                </div>
+                                <div class="grouped-dropdown-item">
+                                    <ul>
+                                            <li class="dropdown-item more-menu-trigger no-icon" data-format="removeformat" data-tooltip="Clears formatting on currently selected text">
+        <a id="rte-removeformat" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+            Clear formatting
+        </a>
+    </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+
+                <ul class="aui-buttons">
+                    
+                <li class="toolbar-item aui-button" id="rte-button-bullist" data-tooltip="Bullet list (Ctrl+Shift+B)">
+        <a class="toolbar-trigger" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" data-control-id="bullist">
+                <span class="icon icon-bullist ">Bullet list</span>
+        </a>
+    </li>
+                    
+                <li class="toolbar-item aui-button" id="rte-button-numlist" data-tooltip="Numbered list (Ctrl+Shift+N)">
+        <a class="toolbar-trigger" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" data-control-id="numlist">
+                <span class="icon icon-numlist ">Numbered list</span>
+        </a>
+    </li>
+                </ul>
+
+                                <ul class="aui-buttons">
+                    
+                <li class="toolbar-item aui-button" id="rte-button-tasklist" data-tooltip="Task list ([ then ])">
+        <a class="toolbar-trigger" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" data-control-id="tasklist">
+                <span class="icon icon-tasklist ">Task list</span>
+        </a>
+    </li>
+                </ul>
+                
+                <ul class="aui-buttons">
+                    
+                <li class="toolbar-item aui-button" id="rte-button-outdent" data-tooltip="Outdent">
+        <a class="toolbar-trigger" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" data-control-id="outdent">
+                <span class="icon icon-outdent ">Outdent</span>
+        </a>
+    </li>
+                    
+                <li class="toolbar-item aui-button" id="rte-button-indent" data-tooltip="Indent">
+        <a class="toolbar-trigger" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" data-control-id="indent">
+                <span class="icon icon-indent ">Indent</span>
+        </a>
+    </li>
+                </ul>
+
+                <ul class="aui-buttons">
+                    
+                <li class="toolbar-item aui-button" id="rte-button-justifyleft" data-tooltip="Align left">
+        <a class="toolbar-trigger" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" data-control-id="justifyleft">
+                <span class="icon icon-justifyleft ">Align left</span>
+        </a>
+    </li>
+                    
+                <li class="toolbar-item aui-button" id="rte-button-justifycenter" data-tooltip="Align center">
+        <a class="toolbar-trigger" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" data-control-id="justifycenter">
+                <span class="icon icon-justifycenter ">Align center</span>
+        </a>
+    </li>
+                    
+                <li class="toolbar-item aui-button" id="rte-button-justifyright" data-tooltip="Align right">
+        <a class="toolbar-trigger" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" data-control-id="justifyright">
+                <span class="icon icon-justifyright ">Align right</span>
+        </a>
+    </li>
+                </ul>
+
+                                <ul class="aui-buttons hidden" id="page-layout-2-group">
+                    <li id="page-layout-2" class="toolbar-item" data-tooltip="Page layout">
+                        <a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="aui-button toolbar-trigger" id="rte-button-pagelayout-2">
+                                <span class="icon icon-layout ">Page layout</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <ul class="aui-buttons">
+                    <li class="toolbar-item" data-tooltip="Insert link (Ctrl+K)">
+                        <a id="rte-button-link" class="toolbar-trigger aui-button" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" data-control-id="linkbrowserButton">
+                                <span class="icon icon-link "></span>
+                            <span class="trigger-text">Link</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="aui-buttons">
+                    <li class="toolbar-item toolbar-dropdown" id="insert-table-dropdown">
+                        <div class="aui-dd-parent">
+                            <a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="toolbar-trigger aui-dd-trigger aui-button" id="rte-button-insert-table" data-tooltip="Insert table">
+                                    <span class="icon icon-table "></span>
+                                <span class="dropdown-text">Table</span>
+                                    <span class="icon icon-dropdown "></span>
+                            </a>
+
+                            <div id="table-picker-container" class="hidden">
+                                <div class="table-picker-box" data-tooltip="Hold SHIFT for a table without a heading.">
+                                    <div class="table-picker-background">
+                                        <div class="picker picker-cell"></div>
+                                        <div class="picker picker-heading heading"></div>
+                                        <div class="picker picker-selected-cell"></div>
+                                        <div class="picker picker-selected-heading heading"></div>
+                                    </div>
+                                    <p class="desc"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                
+                
+                <ul class="aui-buttons">
+                    <li class="toolbar-item toolbar-dropdown" id="insert-menu">
+                        <div class="aui-dd-parent">
+                            <a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="toolbar-trigger aui-dd-trigger aui-button" id="rte-button-insert" data-tooltip="Insert more content">
+                                    <span class="icon icon-insert "></span>
+                                <span class="dropdown-text">Insert</span>
+                                    <span class="icon icon-dropdown "></span>
+                            </a>
+
+                            <div id="insert-menu-options" class="aui-dropdown grouped hidden">
+                                <div class="grouped-dropdown-item">
+                                    <span class="assistive">Insert content</span>
+                                    <ul id="content-insert-list">
+                                        
+        
+        <li class="dropdown-item content-image" data-command="mceConfimage" data-tooltip="Insert image (Ctrl+M)">
+        <a id="rte-insert-image" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+                <span class="icon "></span>
+ Image
+        </a>
+    </li>
+                                        
+        
+        <li class="dropdown-item content-link" data-control-id="linkbrowserButton" data-tooltip="Insert link (Ctrl+K)">
+        <a id="rte-insert-link" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+                <span class="icon "></span>
+ Link
+        </a>
+    </li>
+                                                                                    
+    
+        <li class="dropdown-item content-attachment" data-command="mceConfAttachments" data-tooltip="Insert attachment">
+        <a id="rte-insert-attachment" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+                <span class="icon "></span>
+ Attachment
+        </a>
+    </li>
+                                                                                
+    
+        <li class="dropdown-item content-symbol" data-command="confCharmap" data-tooltip="Insert symbol">
+        <a id="rte-insert-symbol" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+                <span class="icon "></span>
+ Symbol
+        </a>
+    </li>
+                                        
+    
+        <li class="dropdown-item content-emoticon" data-command="mceEmotion" data-tooltip="Insert emoticon">
+        <a id="rte-insert-emoticon" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+                <span class="icon "></span>
+ Emoticon
+        </a>
+    </li>
+                                        
+        
+        <li class="dropdown-item content-wikimarkup" data-command="InsertWikiMarkup" data-tooltip="Insert markup (Ctrl+Shift+D)">
+        <a id="rte-insert-wikimarkup" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+                <span class="icon "></span>
+ Markup
+        </a>
+    </li>
+                                        
+    
+        <li class="dropdown-item content-hr" data-command="InsertHorizontalRule" data-tooltip="Insert horizontal rule (----)">
+        <a id="rte-insert-hr" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+                <span class="icon "></span>
+ Horizontal rule
+        </a>
+    </li>
+                                                                                    
+        
+        <li class="dropdown-item content-tasklist" data-command="InsertInlineTaskListNoToggle" data-tooltip="Insert task list ([ then ])">
+        <a id="rte-insert-tasklist" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+                <span class="icon "></span>
+ Task list
+        </a>
+    </li>
+                                                                            </ul>
+                                </div>
+                                <div class="grouped-dropdown-item">
+                                    <span class="assistive">Insert macro</span>
+                                    <ul id="macro-insert-list">
+                                                                                                                                                                                <li class="dropdown-item macro-insertmention-button" data-macro-name="insertmention-button" data-tooltip="Insert &#39;User mention&#39; macro">
+        <a id="insertmention-button" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+                <span class="icon "></span>
+ User mention
+        </a>
+    </li>
+                                                                                                <li class="dropdown-item macro-jiralink" data-macro-name="jiralink" data-tooltip="Insert &#39;JIRA issue&#39; macro">
+        <a id="jiralink" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+                <span class="icon "></span>
+ JIRA issue
+        </a>
+    </li>
+                                                                                                <li class="dropdown-item macro-info" data-macro-name="info" data-tooltip="Insert &#39;Info&#39; macro">
+        <a id="info" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+                <span class="icon "></span>
+ Info
+        </a>
+    </li>
+                                                                                                <li class="dropdown-item macro-status" data-macro-name="status" data-tooltip="Insert &#39;Status&#39; macro">
+        <a id="status" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+                <span class="icon "></span>
+ Status
+        </a>
+    </li>
+                                                                                                <li class="dropdown-item macro-gallery" data-macro-name="gallery" data-tooltip="Insert &#39;Gallery&#39; macro">
+        <a id="gallery" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+                <span class="icon "></span>
+ Gallery
+        </a>
+    </li>
+                                                                                                <li class="dropdown-item macro-toc" data-macro-name="toc" data-tooltip="Insert &#39;Table of Contents&#39; macro">
+        <a id="toc" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+                <span class="icon "></span>
+ Table of Contents
+        </a>
+    </li>
+                                                                                                                            
+        
+        <li class="dropdown-item content-macro" data-command="mceConfMacroBrowser" data-tooltip="Open the macro browser (Ctrl+Shift+A)">
+        <a id="rte-insert-macro" class="item-link" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#">
+                <span class="icon "></span>
+ Other macros
+        </a>
+    </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                                <ul class="aui-buttons">
+                    <li id="pagelayout-menu" class="toolbar-item toolbar-dropdown">
+                        <div class="aui-dd-parent">
+                            <a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="toolbar-trigger aui-dd-trigger aui-button" id="rte-button-pagelayout" data-tooltip="Page layout">
+                                    <span class="icon icon-layout pagelayout-default">Page layout</span>
+                                    <span class="icon icon-dropdown "></span>
+                            </a>
+
+                            <ul id="pagelayout-menu-options" class="aui-dropdown hidden">
+                                <li class="dropdown-item" data-tooltip="No layout">
+    <a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-none&quot;, &quot;columns&quot;: 0   }">
+            <span class="icon icon-check hidden"></span>
+            <span class="icon icon-layout pagelayout-none">No layout</span>
+    </a>
+</li>
+                                <li class="dropdown-item" data-tooltip="Two column (simple)">
+    <a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-two-simple&quot;, &quot;columns&quot;: [&quot;&quot;, &quot;&quot;]   }">
+            <span class="icon icon-check hidden"></span>
+            <span class="icon icon-layout pagelayout-two-simple">Two column (simple)</span>
+    </a>
+</li>
+                                <li class="dropdown-item" data-tooltip="Two column (simple, left sidebar)">
+    <a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-two-simple-left&quot;, &quot;columns&quot;: [&quot;aside&quot;, &quot;large&quot;]   }">
+            <span class="icon icon-check hidden"></span>
+            <span class="icon icon-layout pagelayout-two-simple-left">Two column (simple, left sidebar)</span>
+    </a>
+</li>
+                                <li class="dropdown-item" data-tooltip="Two column (simple, right sidebar)">
+    <a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-two-simple-right&quot;, &quot;columns&quot;: [&quot;large&quot;, &quot;aside&quot;]   }">
+            <span class="icon icon-check hidden"></span>
+            <span class="icon icon-layout pagelayout-two-simple-right">Two column (simple, right sidebar)</span>
+    </a>
+</li>
+                                <li class="dropdown-item" data-tooltip="Three column (simple)">
+    <a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-three-simple&quot;, &quot;columns&quot;: [&quot;&quot;, &quot;&quot;, &quot;&quot;]   }">
+            <span class="icon icon-check hidden"></span>
+            <span class="icon icon-layout pagelayout-three-simple">Three column (simple)</span>
+    </a>
+</li>
+                                <li class="dropdown-item" data-tooltip="Two column">
+    <a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-two&quot;, &quot;columns&quot;: [&quot;&quot;, &quot;&quot;] , &quot;header&quot;: true  , &quot;footer&quot;:true  }">
+            <span class="icon icon-check hidden"></span>
+            <span class="icon icon-layout pagelayout-two">Two column</span>
+    </a>
+</li>
+                                <li class="dropdown-item" data-tooltip="Two column (left sidebar)">
+    <a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-two-left&quot;, &quot;columns&quot;: [&quot;aside&quot;, &quot;large&quot;] , &quot;header&quot;: true  , &quot;footer&quot;:true  }">
+            <span class="icon icon-check hidden"></span>
+            <span class="icon icon-layout pagelayout-two-left">Two column (left sidebar)</span>
+    </a>
+</li>
+                                <li class="dropdown-item" data-tooltip="Two column (right sidebar)">
+    <a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-two-right&quot;, &quot;columns&quot;: [&quot;large&quot;, &quot;aside&quot;] , &quot;header&quot;: true  , &quot;footer&quot;:true  }">
+            <span class="icon icon-check hidden"></span>
+            <span class="icon icon-layout pagelayout-two-right">Two column (right sidebar)</span>
+    </a>
+</li>
+                                <li class="dropdown-item" data-tooltip="Three column">
+    <a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-three&quot;, &quot;columns&quot;: [&quot;&quot;, &quot;&quot;, &quot;&quot;] , &quot;header&quot;: true  , &quot;footer&quot;:true  }">
+            <span class="icon icon-check hidden"></span>
+            <span class="icon icon-layout pagelayout-three">Three column</span>
+    </a>
+</li>
+                                <li class="dropdown-item" data-tooltip="Three column (left and right sidebars)">
+    <a href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-three-sidebars&quot;, &quot;columns&quot;: [&quot;sidebars&quot;, &quot;large&quot;, &quot;sidebars&quot;] , &quot;header&quot;: true  , &quot;footer&quot;:true  }">
+            <span class="icon icon-check hidden"></span>
+            <span class="icon icon-layout pagelayout-three-sidebars">Three column (left and right sidebars)</span>
+    </a>
+</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                
+                <ul class="aui-buttons">
+                    
+                <li class="toolbar-item aui-button" id="rte-button-undo" data-tooltip="Undo (Ctrl+Z)">
+        <a class="toolbar-trigger" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" data-control-id="undo">
+                <span class="icon icon-undo ">Undo</span>
+        </a>
+    </li>
+                    
+                <li class="toolbar-item aui-button" id="rte-button-redo" data-tooltip="Redo (Ctrl+Y)">
+        <a class="toolbar-trigger" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" data-control-id="redo">
+                <span class="icon icon-redo ">Redo</span>
+        </a>
+    </li>
+                </ul>
+
+                
+            </div>            <div class="aui-toolbar2-secondary">
+                <ul class="aui-buttons">
+                        <li class="toolbar-item aui-button" id="rte-button-searchreplace" data-tooltip="Find/Replace">
+        <a class="toolbar-trigger" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" data-control-id="searchreplace">
+                <span class="icon icon-searchreplace ">Find/Replace</span>
+        </a>
+    </li>
+                </ul>
+                <ul class="aui-buttons">
+                        <li class="toolbar-item aui-button" id="rte-button-help" data-tooltip="Help">
+        <a class="toolbar-trigger" href="http://192.168.18.250:8090/display/ML/Deep+Learning+Framework+%3A+caffe+installation+guide#" data-control-id="help">
+                <span class="icon icon-help ">Keyboard shortcuts help</span>
+        </a>
+    </li>
+                </ul>
+            </div>        </div>    </div>
+    <div id="wysiwyg" class="resize">
+        <div id="rte" class="cell editor-default">
+            <textarea id="wysiwygTextarea" name="wysiwygContent" class="hidden tinymce-editor"></textarea>
+        </div>
+    </div>
+    <div id="editor-html-source-container" class="hidden">
+        <textarea id="editor-html-source" class="monospaceInput"></textarea>
+    </div>
+
+    <div id="preview">
+                        <div id="previewArea" class="cell">
+        </div>
+    </div>
+
+            
+
+<div id="savebar-container">
+    <div id="rte-savebar" class="aui-toolbar aui-toolbar2">
+
+                    
+        
+        <div class="toolbar-split toolbar-split-row">
+            <div class="toolbar-split toolbar-split-left">
+            <div class="aui-buttons">
+                                                                                            <button class="aui-button" type="button" data-tooltip="Insert attachment" id="rte-button-attachments">
+                        <span class="icon icon-attachment"></span>
+                        <span class="trigger-text">30 Attachments</span>
+                    </button>
+                                                                            <button class="aui-button" type="button" data-tooltip="Edit page labels" id="rte-button-labels">
+                        <span class="icon icon-labels"></span>
+                        <span class="trigger-text">Labels</span>
+                    </button>
+                            </div>
+                    </div>            <div class="toolbar-split toolbar-split-right">
+                            <div class="aui-buttons" id="toolbar-group-minor-edit">
+                    <ul class="toolbar-group toolbar-group-watch-page" id="toolbar-group-watch-page-after-comment">
+                        <li class="toolbar-item">
+                            <input id="watchPage" name="watchPageAfterComment" value="true" type="checkbox" checked="checked">
+                            <label for="watchPage">Watch this page</label>
+                        </li>
+                    </ul>
+                                             <span class="rte-toolbar-comment toolbar-item">
+                            <input id="versionComment" name="versionComment" placeholder="What did you change?" class="text" type="text" size="35">
+                            <label for="versionComment" class="assistive">What did you change?</label>
+                        </span>
+                                                                 <span class="minor-edit toolbar-item">
+                            <input id="notifyWatchers" name="notifyWatchers" value="true" type="checkbox" checked="checked">
+                            <label for="notifyWatchers"><span>Notify watchers</span></label>
+                        </span>
+                                    </div>
+            
+                    <div class="aui-buttons">
+                <span id="rte-spinner" class="toolbar-item">&nbsp;</span>
+            </div>
+            <div class="aui-buttons toolbar-group-edit assistive">
+                <button id="rte-button-edit" class="aui-button" title="Return To edit Mode" type="button">
+                    <span class="trigger-text">Edit</span>
+                </button>
+            </div>
+            <div class="aui-buttons toolbar-group-preview">
+                <button class="aui-button toolbar-item" id="rte-button-preview" title="Preview" type="button">
+                    <span class="trigger-text">Preview</span>
+                </button>
+            </div>
+
+        
+            <div class="save-button-container">
+                                                                                                                                                            <button class="aui-button aui-button-primary" type="submit" id="rte-button-publish" name="confirm" value="Save" title="Save">
+                            <span class="trigger-text">Save</span>
+                        </button>
+                                                </div>
+                                            <button class="toolbar-item-link aui-button aui-button-link" type="submit" id="rte-button-cancel" value="discard" name="cancel"><span class="trigger-text">Cancel</span></button>
+
+        </div>         </div>
+
+                    <div class="toolbar-split toolbar-split-row" id="toolbar-hints-draft-status">
+                <div class="toolbar-split toolbar-split-right">
+                    <div id="draft-status"></div>
+                </div>
+            </div>
+            </div> </div>
+
+    
+    
+</div>
+
+
+
+<script type="text/x-template" title="dynamic-editor-metadata">
+            <meta name="ajs-content-type" content="page">
+            <meta name="ajs-min-editor-height" content="150">
+            <meta name="ajs-editor-plugin-resource-prefix" content="/s/en_GB/5517/9d43bc72bc0b5d5a7475f95359a86b073d1eaeea.1/5.5.4/_">
+            <meta name="ajs-num-attachments" content="30">
+            <meta name="ajs-auto-start" content="false">
+            <meta name="ajs-cancel-button-close-text" content="Close">
+            <meta name="ajs-content-id" content="5210410">
+            <meta name="ajs-action-locale" content="en_GB">
+            <meta name="ajs-save-drafts" content="true">
+            <meta name="ajs-use-inline-tasks" content="true">
+            <meta name="ajs-heartbeat" content="true">
+            <meta name="ajs-cancel-button-discard-text" content="">
+            <meta name="ajs-draft-id" content="0">
+            <meta name="ajs-new-page" content="false">
+            <meta name="ajs-form-name" content="inlinecommentform">
+            <meta name="ajs-attachment-source-content-id" content="5210410">
+            <meta name="ajs-editor-mode" content="richtext">
+            <meta name="ajs-draft-type" content="page">
+            <meta name="ajs-existing-draft-id" content="0">
+            <meta name="ajs-can-attach-files" content="true">
+                
+            		    <meta name="ajs-max-thumb-width" content="300">
+		    <meta name="ajs-max-thumb-height" content="300">
+		    <meta name="ajs-can-send-email" content="false">
+		    <meta name="ajs-is-dev-mode" content="false">
+		    <meta name="ajs-draft-save-interval" content="30000">
+		    <meta name="ajs-show-hidden-user-macros" content="false">
+		    <meta name="ajs-is-admin" content="false">
+		    <meta name="ajs-confluence.prefs.editor.disable.autocomplete" content="false">
+		    <meta name="ajs-confluence.prefs.editor.disable.autoformat" content="false">
+		    <meta name="ajs-heartbeat-interval" content="30000">
+	
+    </script>
+
+
+<div id="hidden-permission-fields" class="hidden">
+    <input id="viewPermissionsUsers" type="text" name="viewPermissionsUsers" value="">
+    <input id="editPermissionsUsers" type="text" name="editPermissionsUsers" value="">
+    <input id="viewPermissionsGroups" type="text" name="viewPermissionsGroups" value="">
+    <input id="editPermissionsGroups" type="text" name="editPermissionsGroups" value="">
+</div>
+
+<script type="text/x-template" title="tableForm">
+    <form id="tinymce-table-form" class="aui">
+        <div class="field-group">
+            <label for="rows">Rows</label>
+            <input id="rows" name="rows" type="text" size="3" autocomplete="off" value="{0}">
+        </div>
+        <div class="field-group">
+            <label for="cols">Columns</label>
+            <input id="cols" name="cols" type="text" size="3" autocomplete="off" value="{1}">
+        </div>
+        <div class="field-group hidden">
+            <input id="width" type="hidden" name="width" value="">
+            <label for="width">Width</label>
+        </div>
+        <div class="group">
+            <div class="checkbox">
+                <input id="table-heading-checkbox" class="checkbox" type="checkbox" name="heading" checked="checked" value="true">
+                <label for="table-heading-checkbox">First row is heading</label>
+            </div>
+        </div>
+        <div class="group hidden">
+            <div class="checkbox">
+                <input id="table-equal-width-columns-checkbox" class="checkbox" type="checkbox" name="equal-width-columns" value="false">
+                <label for="table-equal-width-columns-checkbox">Equal width columns</label>
+            </div>
+        </div>
+    </form>
+</script>
+<input type="hidden" name="draftId" value="0" id="draftId"><input type="hidden" name="originalVersion" value="41" id="originalVersion">    <input type="hidden" name="atl_token" value="b3dfc2d78d347fa27be228927a6b399a8d7b1329">
+</div><div id="inline-dialog-selection-action-panel" class="aui-inline-dialog" style="left: 882px; right: auto; top: 1439px; display: none;"><div class="contents" unselectable="on" style="width: auto;"><button data-key="com.atlassian.confluence.plugins.confluence-highlight-actions:quote-comment" class="aui-button aui-button-compact aui-button-subtle" original-title="Quote in comment" style="display: inline-block;"><span class="aui-icon aui-icon-small aui-iconfont-comment"></span></button><button data-key="com.atlassian.confluence.plugins.confluence-jira-content:create-JIRA-issue-summary" class="aui-button aui-button-compact aui-button-subtle" original-title="Create JIRA issue" style="display: inline-block;"><span class="aui-icon aui-icon-small aui-iconfont-jira"></span></button></div><div id="arrow-selection-action-panel" class="arrow aui-css-arrow aui-bottom-arrow" unselectable="on" style="position: absolute; left: 33.5px; right: auto; top: 36px;"></div></div><div id="action-dialog-target" class="" style="top: 1483px; height: 16px; left: 888px; width: 56px; display: none;"></div></body></html>
